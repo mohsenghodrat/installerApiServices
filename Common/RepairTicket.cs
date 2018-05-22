@@ -4,11 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Schema;
 
 namespace Common
 {
-    public class InstalledTicket
+    public class RepairTicket
     {
         public long Id { get; set; }
         public string NoyeService { get; set; }
@@ -58,6 +57,5 @@ namespace Common
         public string TozihatA { get; set; }
         public string HazinehBeRiyal { get; set; }
         public string TozihabB { get; set; }
-
     }
 }
