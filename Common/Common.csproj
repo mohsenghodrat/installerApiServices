@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InstalledTicket.cs" />
-    <Compile Include="Installers.cs" />
+    <Compile Include="Installer.cs" />
     <Compile Include="InstallList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepairTicket.cs" />

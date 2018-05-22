@@ -49,12 +49,20 @@
   <ItemGroup>
     <Compile Include="DataContext\RadioInstallerContext.cs" />
     <Compile Include="IRepository\IRepoaitory.cs" />
+    <Compile Include="IRepository\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryImplementation\Repository.cs" />
+    <Compile Include="RepositoryImplementation\BaseReposotory.cs" />
+    <Compile Include="RepositoryImplementation\BaseUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{8040617e-95a0-46aa-8ea6-832c01a75f05}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

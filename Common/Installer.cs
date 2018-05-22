@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class Installers
+    public class Installer
     {
         public long Id { get; set; }
         public string Username { get; set; }
