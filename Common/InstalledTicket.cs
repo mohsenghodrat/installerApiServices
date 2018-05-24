@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,28 +11,26 @@ namespace Common
 {
     public class InstalledTicket
     {
+        [Key]
         public long Id { get; set; }
+        [Required]
+        public string TicketId { get; set; }
         public string NoyeService { get; set; }
         public DateTime CreatedDateTime { get; set; }
 
-        [DefaultValue(" ")]
         public bool NahveyeBastanANtenBaBasyFelizi { get; set; }
-        [DefaultValue(" ")]
         public bool MakanNasbAntenDarFilmMojodAst { get; set; }
-        [DefaultValue(" ")]
         public bool AmozeshSHarjKardan { get; set; }
-        [DefaultValue(" ")]
         public bool AyaAntenRoyeSolehAst { get; set; }
-        [DefaultValue(" ")]
         public bool TestGerftanSignal { get; set; }
 
-        [DefaultValue(0)]
+        [DefaultValue(" ")]
         public string CcqTx { get; set; }
-        [DefaultValue(0)]
+        [DefaultValue(" ")]
         public string CcqRx { get; set; }
-        [DefaultValue(0)]
+        [DefaultValue(" ")]
         public string SignalTx { get; set; }
-        [DefaultValue(0)]
+        [DefaultValue(" ")]
         public string SignalRx { get; set; }
 
         public bool NasbmahalJoghrafiyaye { get; set; }
