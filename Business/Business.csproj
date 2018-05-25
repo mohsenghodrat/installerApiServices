@@ -43,7 +43,7 @@
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="InstalledTicketManager.cs" />
     <Compile Include="InstallerManager.cs" />
-    <Compile Include="InstalListManager.cs" />
+    <Compile Include="InstallListManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepairTicketManager.cs" />
   </ItemGroup>

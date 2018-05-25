@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Common;
 namespace Business
 {
-    public class InstalListManager
+    public class InstallListManager
     {
         BaseBUsiness<InstallList> installListManager = null;
-        public InstalListManager()
+        public InstallListManager()
         {
             if (installListManager == null)
             {
