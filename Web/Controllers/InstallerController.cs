@@ -6,38 +6,64 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Business;
+using Common;
+
+
 namespace Web.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/installer")]
     public class InstallerController : ApiController
     {
+        InstallerManager installerManager = null;
+        public InstallerController()
+        {
+            if (installerManager == null)
+            {
+                installerManager = new InstallerManager();
+            }
+        }
+        [Route("", Name = "GetAllTickets")]
         // GET: api/Installer
         public IHttpActionResult Get()
         {
-            
-            return Ok();
+            var res = installerManager.GetQuery().ToList() ?? null;
+            if(res != null)
+            {
+                return Ok(res);
+            }
+            return NotFound();
         }
-
-        // GET: api/Installer/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+        [Route("", Name = "AddInstallerTicket")]
         // POST: api/Installer
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post(Installer ticket)
         {
-        }
+            if(ticket == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotAcceptable,"PLease Enter True Object");
+            }
 
+            ticket.UserId = Guid.NewGuid().ToString();
+            ticket.CreatedUserDateTime = DateTime.Now;
+            installerManager.AddTicket(ticket);
+            installerManager.Save();
+            return Request.CreateResponse(HttpStatusCode.Accepted);
+        }
+        [Route("", Name = "UpdateINstallerTicket")]
         // PUT: api/Installer/5
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(Installer ticket)
         {
+            installerManager.UpdateTicket(ticket);
+            installerManager.Save();
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
-
+        [Route("", Name = "DeleteInstallerTicket")]
         // DELETE: api/Installer/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(Installer ticket)
         {
+            installerManager.DeleteTicket(ticket);
+            installerManager.Save();
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

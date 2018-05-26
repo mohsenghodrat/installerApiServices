@@ -21,6 +21,9 @@ namespace Common
         public bool TajhezatDara { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
+        [Required]
+        [DataType(DataType.DateTime)]
+        public DateTime CreatedInstallListDateTime { get; set; }
 
 
     }

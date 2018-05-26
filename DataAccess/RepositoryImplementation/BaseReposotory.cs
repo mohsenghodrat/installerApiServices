@@ -64,7 +64,7 @@ namespace DataAccess.RepositoryImplementation
             {
                 throw new ArgumentNullException("Entity is Empty For Adding");
             }
-
+            context.Entry<T>(entity).State = EntityState.Added;
             db.Add(entity);
         }
 
@@ -74,9 +74,10 @@ namespace DataAccess.RepositoryImplementation
             {
                 throw new ArgumentNullException("Entities Are  Empty For Adding");
             }
-
+            
             foreach (T entity in entities)
             {
+                context.Entry<T>(entity).State = EntityState.Added;
                 db.Add(entity);
             }
         }
@@ -87,7 +88,7 @@ namespace DataAccess.RepositoryImplementation
             {
                 throw new ArgumentNullException("Entity is Empty For Deleting");
             }
-
+            context.Entry<T>(entity).State = EntityState.Deleted;
             db.Remove(entity);
         }
 

@@ -36,7 +36,10 @@ namespace Business
         {
             return baseUnitOfWork.UnitOfWork.GetQuery();
         }
-
+        public void Save()
+        {
+            baseUnitOfWork.Commit();
+        }
 
     }
 }

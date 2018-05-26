@@ -6,8 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Business;
-
-
+using Common;
 
 namespace Web.Controllers
 {
@@ -23,29 +22,42 @@ namespace Web.Controllers
                 installLIstManager = new InstallListManager();
             }
         }
-        [Route("", Name = "")]
+        [Route("", Name = "GetAllInstallList")]
         //Get
         public IHttpActionResult Get()
         {
-            return Ok();
+            var res = installLIstManager.GetQuery().ToList() ?? null;
+            if(res != null)
+            {
+                return Ok(res);
+            }
+            return NotFound();
         }
-        [Route("", Name = "")]
+        [Route("", Name = "AddInstallListTicket")]
         //Post
-        public HttpResponseMessage Post()
+        public HttpResponseMessage Post(InstallList ticket)
         {
-            return null;
+            ticket.CreatedInstallListDateTime = DateTime.Now;
+            ticket.TicketId = Guid.NewGuid().ToString();
+            installLIstManager.AddTicket(ticket);
+            installLIstManager.Save();
+            return Request.CreateResponse(HttpStatusCode.Accepted);
         }
-        [Route("", Name = "")]
+        [Route("", Name = "UpdateInstallList")]
         //Put
-        public void Put()
+        public HttpResponseMessage Put(InstallList ticket)
         {
-
+            installLIstManager.UpdateTicket(ticket);
+            installLIstManager.Save();
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
-        [Route("", Name = "")]
+        [Route("", Name = "DeleteInstallList")]
         //Delete
-        public void Delete()
+        public HttpResponseMessage Delete(InstallList ticket)
         {
-
+            installLIstManager.DeleteTicket(ticket);
+            installLIstManager.Save();
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 

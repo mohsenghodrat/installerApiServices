@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using  System.Data.Entity;
 using Common;
+using DataAccess.Migrations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccess.DataContext
 {
+    
     public class RadioInstallerContext : DbContext
     {
         public DbSet<InstalledTicket> InstalledTickets { get; set; }
@@ -25,7 +28,7 @@ namespace DataAccess.DataContext
             modelBuilder.Entity<InstalledTicket>().ToTable("InstalledTickets", "dbo");
             modelBuilder.Entity<Installer>().ToTable("Installers", "dbo");
             modelBuilder.Entity<InstallList>().ToTable("InstallLists", "dbo");
-            modelBuilder.Entity<InstallList>().ToTable("RepairTickets", "dbo");
+            modelBuilder.Entity<RepairTicket>().ToTable("RepairTickets", "dbo");
         }
     }
 }

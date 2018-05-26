@@ -25,5 +25,6 @@ namespace Business
             installListManager.Update(originalTicket,ticket);
         }
         public IQueryable<InstallList> GetQuery() { return installListManager.GetQuery(); }
+        public void Save() { installListManager.Save(); }
     }
 }

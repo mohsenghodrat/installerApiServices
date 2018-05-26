@@ -18,7 +18,9 @@ namespace Common
         [Required]
         public string TicketId { get; set; }
         public string NoyeService { get; set; }
-        public DateTime CreatedDateTime { get; set; }
+        [Required]
+        [DataType(DataType.DateTime)]
+        public DateTime CreatedRepairTicketDateTime { get; set; }
 
         [DefaultValue(" ")]
         public bool NahveyeBastanANtenBaBasyFelizi { get; set; }

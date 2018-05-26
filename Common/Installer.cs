@@ -18,5 +18,8 @@ namespace Common
         [Required]
         [Range(6,13)]
         public string Password { get; set; }
+        [Required]
+        [DataType(DataType.DateTime)]
+        public DateTime CreatedUserDateTime { get; set; }
     }
 }

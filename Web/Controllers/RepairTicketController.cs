@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Business;
+using Common;
 
 namespace Web.Controllers
 {
@@ -21,28 +22,42 @@ namespace Web.Controllers
                 repairTicketManager = new RepairTicketManager();
             }
         }
-        [Route("", Name = "")]
+        [Route("", Name = "GetAllRepairTicket")]
         //Get
         public IHttpActionResult Get()
         {
-            return Ok();
+            var res = repairTicketManager.GetAllQuery().ToList() ?? null;
+            if (res != null)
+            {
+                return Ok(res);
+            }
+            return NotFound();
         }
-        [Route("", Name = "")]
+        [Route("", Name = "AddRepairTicket")]
         //Post
-        public HttpResponseMessage Post()
+        public HttpResponseMessage Post(RepairTicket ticket)
         {
-            return null;
+            ticket.TicketId = Guid.NewGuid().ToString();
+            ticket.CreatedRepairTicketDateTime = DateTime.Now;
+            repairTicketManager.AddTicket(ticket);
+            repairTicketManager.Save();
+            return Request.CreateResponse(HttpStatusCode.Accepted);
         }
-        [Route("", Name = "")]
+        [Route("", Name = "UpdateRepairTicket")]
         //Put
-        public void Put()
+        public HttpResponseMessage Put(RepairTicket ticket)
         {
-
+            repairTicketManager.UpdateTicket(ticket);
+            repairTicketManager.Save();
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
+        [Route("",Name = "DeleteRepairTicket")]
         //Delete
-        public void Delete()
+        public HttpResponseMessage Delete(RepairTicket ticket)
         {
-
+            repairTicketManager.DeleteTicket(ticket);
+            repairTicketManager.Save();
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

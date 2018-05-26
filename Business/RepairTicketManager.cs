@@ -37,5 +37,6 @@ namespace Business
         {
             return repairTicketManager.GetQuery();
         }
+        public void Save() { repairTicketManager.Save(); }
     }
 }
