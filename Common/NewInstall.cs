@@ -9,7 +9,7 @@ using System.Xml.Schema;
 
 namespace Common
 {
-    public class InstalledTicket
+    public class NewInstall
     {
         [Key]
         public long Id { get; set; }

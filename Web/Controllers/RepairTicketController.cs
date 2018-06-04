@@ -22,7 +22,7 @@ namespace Web.Controllers
                 repairTicketManager = new RepairTicketManager();
             }
         }
-        [Route("", Name = "GetAllRepairTicket")]
+        [Route("", Name = "GetAllRepairTickets")]
         //Get
         public IHttpActionResult Get()
         {

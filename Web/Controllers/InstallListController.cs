@@ -33,7 +33,7 @@ namespace Web.Controllers
             }
             return NotFound();
         }
-        [Route("", Name = "AddInstallListTicket")]
+        [Route("", Name = "AddInstallList")]
         //Post
         public HttpResponseMessage Post(InstallList ticket)
         {

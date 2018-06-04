@@ -13,7 +13,7 @@ namespace DataAccess.DataContext
     
     public class RadioInstallerContext : DbContext
     {
-        public DbSet<InstalledTicket> InstalledTickets { get; set; }
+        public DbSet<NewInstall> NewInstalls { get; set; }
         public DbSet<Installer> Installers { get; set; }
         public DbSet<InstallList> InstallLists { get; set; }
         public DbSet<RepairTicket> RepairTickets { get; set; }
@@ -26,7 +26,7 @@ namespace DataAccess.DataContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<InstalledTicket>().ToTable("InstalledTickets", "dbo");
+            modelBuilder.Entity<NewInstall>().ToTable("NewInstalls", "dbo");
             modelBuilder.Entity<Installer>().ToTable("Installers", "dbo");
             modelBuilder.Entity<InstallList>().ToTable("InstallLists", "dbo");
             modelBuilder.Entity<RepairTicket>().ToTable("RepairTickets", "dbo");

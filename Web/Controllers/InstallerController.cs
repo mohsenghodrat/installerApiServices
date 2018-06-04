@@ -23,7 +23,7 @@ namespace Web.Controllers
                 installerManager = new InstallerManager();
             }
         }
-        [Route("", Name = "GetAllTickets")]
+        [Route("", Name = "GetAllInstallers")]
         // GET: api/Installer
         public IHttpActionResult Get()
         {
@@ -34,7 +34,7 @@ namespace Web.Controllers
             }
             return NotFound();
         }
-        [Route("", Name = "AddInstallerTicket")]
+        [Route("", Name = "AddInstaller")]
         // POST: api/Installer
         public HttpResponseMessage Post(Installer ticket)
         {
@@ -49,7 +49,7 @@ namespace Web.Controllers
             installerManager.Save();
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
-        [Route("", Name = "UpdateINstallerTicket")]
+        [Route("", Name = "UpdateInstaller")]
         // PUT: api/Installer/5
         public HttpResponseMessage Put(Installer ticket)
         {
@@ -57,7 +57,7 @@ namespace Web.Controllers
             installerManager.Save();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-        [Route("", Name = "DeleteInstallerTicket")]
+        [Route("", Name = "DeleteInstaller")]
         // DELETE: api/Installer/5
         public HttpResponseMessage Delete(Installer ticket)
         {

@@ -11,18 +11,18 @@ using Common;
 namespace Web.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("api/installedticket")]
-    public class InstalledTicketController : ApiController
+    [RoutePrefix("api/newinstallticket")]
+    public class NewInstallController : ApiController
     {
-        InstalledTicketManager  installedTticketManager = null;
-        public InstalledTicketController()
+        NewInstallManager  installedTticketManager = null;
+        public NewInstallController()
         {
             if (installedTticketManager == null)
             {
-                installedTticketManager = new InstalledTicketManager();
+                installedTticketManager = new NewInstallManager();
             }
         }
-        [Route("",Name = "GetAllInstalledTicket")]
+        [Route("",Name = "GetAllNewInstallTicket")]
         //Get
         public IHttpActionResult Get()
         {
@@ -33,9 +33,9 @@ namespace Web.Controllers
             }
             return NotFound();
         }
-        [Route("", Name = "AddInstalledTicket")]
+        [Route("", Name = "AddNewInstallTicket")]
         //Post
-        public HttpResponseMessage Post (InstalledTicket ticket)
+        public HttpResponseMessage Post (NewInstall ticket)
         {
             ticket.TicketId = Guid.NewGuid().ToString();
             ticket.CreatedInstalledTicketDateTime = DateTime.Now;
@@ -43,17 +43,17 @@ namespace Web.Controllers
             installedTticketManager.Save();
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
-        [Route("", Name = "UpdateInstalledTicket")]
+        [Route("", Name = "UpdateNewInstallTicket")]
         //Put
-        public HttpResponseMessage Put(InstalledTicket ticket)
+        public HttpResponseMessage Put(NewInstall ticket)
         {
             installedTticketManager.UpdateTicket(ticket);
             installedTticketManager.Save();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-        [Route("", Name = "DeleteInstalledTicket")]
+        [Route("", Name = "DeleteNewInstallTicket")]
         //Delete
-        public HttpResponseMessage Delete(InstalledTicket ticket)
+        public HttpResponseMessage Delete(NewInstall ticket)
         {
             installedTticketManager.DeleteTicket(ticket);
             installedTticketManager.Save();

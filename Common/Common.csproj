@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InstalledTicket.cs" />
+    <Compile Include="NewInstall.cs" />
     <Compile Include="Installer.cs" />
     <Compile Include="InstallList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
