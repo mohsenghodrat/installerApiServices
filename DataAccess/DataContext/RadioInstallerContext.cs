@@ -17,6 +17,7 @@ namespace DataAccess.DataContext
         public DbSet<Installer> Installers { get; set; }
         public DbSet<InstallList> InstallLists { get; set; }
         public DbSet<RepairTicket> RepairTickets { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
         public RadioInstallerContext()
         {
             System.Data.Entity.Database.SetInitializer<RadioInstallerContext>(null);
@@ -29,6 +30,7 @@ namespace DataAccess.DataContext
             modelBuilder.Entity<Installer>().ToTable("Installers", "dbo");
             modelBuilder.Entity<InstallList>().ToTable("InstallLists", "dbo");
             modelBuilder.Entity<RepairTicket>().ToTable("RepairTickets", "dbo");
+            modelBuilder.Entity<Ticket>().ToTable("Tickets", "dbo");
         }
     }
 }
